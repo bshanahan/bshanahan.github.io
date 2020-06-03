@@ -1,37 +1,54 @@
-## Welcome to GitHub Pages
+# Orbit
+> This theme is designed by Xiaoying Riley at [3rd Wave Media](http://themes.3rdwavemedia.com/). 
+> Visit her [website](http://themes.3rdwavemedia.com/) for more themes.
 
-You can use the [editor on GitHub](https://github.com/bshanahan/bshanahan.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+I have made this into a Jekyll Theme. Checkout the live demo [here](http://webjeda.com/online-cv/).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<table>
+  <tr>
+    <th>Desktop</th>
+    <th>Mobile</th>
+  </tr>
+  <tr>
+    <td>
+        <img src="/assets/images/desktop.png?raw=true" width="600"/>
+    </td>
+    <td>
+        <img src="/assets/images/mobile.png?raw=true" width="250"/>
+    </td>
+  </tr>
+</table>
 
-### Markdown
+## Installation
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+* [Fork](https://github.com/sharu725/online-cv/fork) the repository
+* Go to settings and set Github Pages source as master.
+* Your new site should be ready at `https://username.github.io/online-cv/`
 
-```markdown
-Syntax highlighted code block
+Change all the details from one place: ``_data/data.yml``
 
-# Header 1
-## Header 2
-### Header 3
+Watch my [video](https://www.youtube.com/embed/T2nx6tj-ZH4) on installation.
 
-- Bulleted
-- List
+## Skins
 
-1. Numbered
-2. List
+There are 6 color schemes available:
 
-**Bold** and _Italic_ and `Code` text
+| Blue | Turquoise | Green |
+|---------|---------|---------|
+| <img src="/assets/images/blue.jpg" width="300"/> | <img src="/assets/images/turquoise.jpg" width="300"/> | <img src="/assets/images/green.jpg" width="300"/> |
 
-[Link](url) and ![Image](src)
-```
+| Berry | Orange | Ceramic |
+|---------|---------|---------|
+| <img src="/assets/images/berry.jpg" width="300"/> | <img src="/assets/images/orange.jpg" width="300"/> | <img src="/assets/images/ceramic.jpg" width="300"/> |
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Credits
 
-### Jekyll Themes
+Thanks to [Nelson Estevão](https://github.com/nelsonmestevao) for all the [contributions](https://github.com/sharu725/online-cv/commits?author=nelsonmestevao).
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/bshanahan/bshanahan.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Thanks to [t-h-e(sfrost)](https://github.com/t-h-e) for all the [contributions](https://github.com/sharu725/online-cv/commits?author=t-h-e).
 
-### Support or Contact
+Check out for more themes: [**Jekyll Themes**](http://jekyll-themes.com).
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## License
+
+This project is licensed under the [MIT license](LICENSE.txt).
