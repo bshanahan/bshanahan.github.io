@@ -107,6 +107,15 @@ publications:
         authors: S L Semiatin, B W Shanahan and F Meisenkothen
         conference: Acta Materialia, 58 (2010), 44464457
 
-
-    
-
+projects:
+      title: Links
+      assignments:
+      - title: BOUT++
+        link: "https://boutproject.github.io"
+        tagline: "My workhorse -- a framework for solving differential equations in curvilinear geometry."
+      - title: Google Scholar Page
+        link: "https://scholar.google.com/citations?user=fibTRNwAAAAJ&hl=en&oi=sra"
+      - title: ResearchGate Page
+        link: "https://www.researchgate.net/profile/Brendan_Shanahan"
+      - title: Max-Planck-Institut für Plasmaphysik
+        link: "https://ipp.mpg.de"
