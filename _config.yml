@@ -7,6 +7,9 @@ baseurl: '/bshanahan.github.io' #change it according to your repository name
 # Style will be applied only after restarting the build or serve. Just choose one of the options.
 theme_skin: ceramic # blue turquoise green berry orange ceramic
 
+# Tracker
+analytics: UA-168573225-1
+
 # Sass/SCSS
 sass:
   sass_dir: _sass
