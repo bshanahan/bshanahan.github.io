@@ -36,7 +36,7 @@ sidebar:
 career-profile:
     title: Bio
     summary: |
-      I am a EUROfusion Researcher Grant recipient and postdoctoral researcher at the Max-Planck-Institut für Plasmphysik in Greifswald, Germany as a member of the Stellarator Theory group.  My research focuses on developing numerical methods for plasma fluid turbulence simulation in non-axisymmetric geometries using the BOUT++ framework.
+      I am a postdoctoral researcher at the Max-Planck-Institut für Plasmphysik in Greifswald, Germany as a member of the Stellarator Theory group.  My research focuses on developing numerical methods for plasma fluid turbulence simulation in non-axisymmetric geometries using the BOUT++ framework.
       
 education:
     - degree: PhD | Physics
@@ -54,11 +54,13 @@ education:
       university: University of York
       time: 2010 - 2011
       details: |
+            Thesis: Infrared Thermography on Transient Events in MAST
 
     - degree: BS | Physics
       university: University of Dayton
       time: 2006 - 2009
-      details: |
+      details:  Minor in Mathematics
+
 
 
 experiences:
@@ -69,8 +71,42 @@ experiences:
 
 publications:
     title: Publications
-    intro: | 
-    papers: | 
+
+    papers:
+      - title: As primary author
+      - title: Fluid simulations of plasma filaments in stellarator geometries with BSTING
+        authors: B W Shanahan, B D Dudson and P Hill
+        conference: Plasma Physics and Controlled Fusion 61 0250007 (2019)
+
+      - title: The effects of non-uniform drive on plasma filaments
+        authors: B W Shanahan, B D Dudson and P Hill
+        conference: Journal of Physics, Conference Series 1125 012018 (2018) 
+
+      - title: Blob Dynamics in Torpex poloidal null configurations
+        authors: B W Shanahan and B D Dudson
+        conference: Plasma Physics and Controlled Fusion 58 125003 (2016)
+
+      - title: Towards nonaxisymmetry; initial results using the Flux Coordinate Independent method in BOUT++
+        authors: B W Shanahan, P Hill, and B D Dudson
+        conference: Journal of Physics, Conference Series 775 012012 (2016)
+
+      - title: X-point modelling in linear configurations using BOUT++ 
+        authors: B Shanahan and B Dudson
+        conference: Journal of Physics, Conference Series 561 012015 (2014)
+
+      - title: Otherwise authored
+      - title: Dirichlet boundary conditions for arbitrary-shaped boundaries in stellarator-like magnetic fields for the Flux-Coordinate Independent method
+        authors: P Hill, B W Shanahan and B D Dudson
+        conference: Computer Physics Communications 213 (2017) 9–18
+
+      - title: A novel flexible field-aligned coordinate system for tokamak edge plasma simulation
+        authors: J Leddy, B Dudson, M Romanelli, B Shanahan, and N Walkden
+        conference: Computer Physics Communications 212 (2017) 59–68	
+
+      - title: Hot rolling of gamma titanium aluminide foil
+        authors: S L Semiatin, B W Shanahan and F Meisenkothen
+        conference: Acta Materialia, 58 (2010), 44464457
 
 
+    
 
