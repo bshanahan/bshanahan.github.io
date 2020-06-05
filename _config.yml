@@ -6,6 +6,8 @@ url: 'bshanahan.github.io'
 baseurl: '/bshanahan.github.io' #change it according to your repository name
 # Style will be applied only after restarting the build or serve. Just choose one of the options.
 theme_skin: ceramic # blue turquoise green berry orange ceramic
+tagline: Postdoc in the stellarator theory department at IPP Greifswald
+author: Brendan Shanahan
 
 # Tracker
 analytics: UA-168573225-1
