@@ -73,36 +73,48 @@ publications:
     title: Publications
     papers:
       - title: As primary author
+        link: "https://scholar.google.com/citations?user=fibTRNwAAAAJ&hl=en&oi=sra"
+
       - title: Fluid simulations of plasma filaments in stellarator geometries with BSTING
+        link: "https://iopscience.iop.org/article/10.1088/1361-6587/aaed7d"
         authors: B W Shanahan, B D Dudson and P Hill
         conference: Plasma Physics and Controlled Fusion 61 0250007 (2019)
 
       - title: The effects of non-uniform drive on plasma filaments
+        link: "https://iopscience.iop.org/article/10.1088/1742-6596/1125/1/012018"
         authors: B W Shanahan, B D Dudson and P Hill
         conference: Journal of Physics, Conference Series 1125 012018 (2018) 
 
       - title: Blob Dynamics in Torpex poloidal null configurations
+        link: "https://iopscience.iop.org/article/10.1088/0741-3335/58/12/125003"
         authors: B W Shanahan and B D Dudson
         conference: Plasma Physics and Controlled Fusion 58 125003 (2016)
 
       - title: Towards nonaxisymmetry; initial results using the Flux Coordinate Independent method in BOUT++
+        link: "https://iopscience.iop.org/article/10.1088/1742-6596/775/1/012012"
         authors: B W Shanahan, P Hill, and B D Dudson
         conference: Journal of Physics, Conference Series 775 012012 (2016)
 
-      - title: X-point modelling in linear configurations using BOUT++ 
+      - title: X-point modelling in linear configurations using BOUT++
+        link: "https://iopscience.iop.org/article/10.1088/1742-6596/561/1/012015"
         authors: B Shanahan and B Dudson
         conference: Journal of Physics, Conference Series 561 012015 (2014)
 
       - title: Otherwise authored
+        link: "https://scholar.google.com/citations?user=fibTRNwAAAAJ&hl=en&oi=sra"
+
       - title: Dirichlet boundary conditions for arbitrary-shaped boundaries in stellarator-like magnetic fields for the Flux-Coordinate Independent method
+        link: "https://www.sciencedirect.com/science/article/pii/S0010465516303587"
         authors: P Hill, B W Shanahan and B D Dudson
         conference: Computer Physics Communications 213 (2017) 9–18
 
       - title: A novel flexible field-aligned coordinate system for tokamak edge plasma simulation
+        link: "https://www.sciencedirect.com/science/article/pii/S0010465516303150"
         authors: J Leddy, B Dudson, M Romanelli, B Shanahan, and N Walkden
         conference: Computer Physics Communications 212 (2017) 59–68	
 
       - title: Hot rolling of gamma titanium aluminide foil
+        link: "https://www.sciencedirect.com/science/article/pii/S1359645410002582"
         authors: S L Semiatin, B W Shanahan and F Meisenkothen
         conference: Acta Materialia, 58 (2010), 44464457
 
