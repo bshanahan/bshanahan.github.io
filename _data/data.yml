@@ -72,10 +72,16 @@ experiences:
       details: |
 
 publications:
-    title: Publications
+    title: Selected Publications
     papers:
       - title: As primary author
         link: "https://scholar.google.com/citations?user=fibTRNwAAAAJ&hl=en&oi=sra"
+	conference: *indicates dual first authorship
+
+      - title: Plasma filaments in the scrape-off layer of Wendelstein 7-X
+        link: "https://iopscience.iop.org/article/10.1088/1361-6587/ab9313"
+        authors: C Killer*, B Shanahan*, O Grulke, M Endler, K Hammond, L Rudischhauser and the W7-X Team
+        conference: Plasma Phys. Control. Fusion62 085003 (2020)
 
       - title: Filament simulations in regions of highly-varying parallel connection length
         link: "https://www.cambridge.org/core/journals/journal-of-plasma-physics/article/filament-simulations-in-regions-of-highlyvarying-parallel-connection-length/D5A1D02C89E4786D8E9ED8C6094DD69B"
