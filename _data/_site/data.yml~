@@ -1,0 +1,145 @@
+#
+# Be aware that even a small syntax error here can lead to failures in output. 
+#
+
+sidebar:
+    about: True # set to False or comment line if you want to remove the "how to use?" in the sidebar
+    education: True # set to False if you want education in main section instead of in sidebar
+
+
+
+    # Profile information
+    name: Brendan Shanahan
+    tagline: Postdoc | IPP Greifswald
+    avatar: profile.png  #place a 100x100 picture inside /assets/images/ folder and provide the name of the file below
+
+    # Sidebar links
+    email: brendan.shanahan@ipp.mpg.de
+    phone: 
+    website: bshanahan.github.io #do not add http://
+    linkedin: 
+    github: bshanahan
+    gitlab:
+    bitbucket:
+    twitter: 
+    stack-overflow: # Number/Username, e.g. 123456/alandoe
+    codewars:
+    researchgate: Brendan_Shanahan
+    google-scholar: B W Shanahan
+    
+    languages:
+      - idiom: English
+        level: Native
+
+      - idiom: German
+        level: Professional
+        
+
+career-profile:
+    title: Bio
+    summary: |
+      I am a postdoctoral researcher at the Max-Planck-Institut für Plasmphysik in Greifswald, Germany as a member of the Stellarator Theory group.  My research focuses on developing numerical methods for plasma fluid turbulence simulation in non-axisymmetric geometries using the BOUT++ framework.
+      
+education:
+    - degree: PhD | Physics
+      university: University of York
+      time: 2013 - 2016
+      details: |
+        Thesis: Turbulence modelling near magnetic null points using BOUT++
+
+    - degree: MA | Physics 
+      university: University of Wisconsin-Madison
+      time: 2011 - 2012
+      details: |
+
+    - degree: MSc | Fusion Energy
+      university: University of York
+      time: 2010 - 2011
+      details: |
+            Thesis: Infrared Thermography on Transient Events in MAST
+
+    - degree: BS | Physics
+      university: University of Dayton
+      time: 2006 - 2009
+      details:  Minor in Mathematics
+
+
+
+experiences:
+    - role: EUROfusion Research Grant Recipient
+      time: 2018 - 2020
+      company: Max-Planck-Institut für Plasmaphysik, Greifswald
+      details: |
+
+publications:
+    title: Selected Publications
+    papers:
+      - title: As primary author
+        link: "https://scholar.google.com/citations?user=fibTRNwAAAAJ&hl=en&oi=sra"
+	conference: *indicates dual first authorship
+
+      - title: Plasma filaments in the scrape-off layer of Wendelstein 7-X
+        link: "https://iopscience.iop.org/article/10.1088/1361-6587/ab9313"
+        authors: C Killer*, B Shanahan*, O Grulke, M Endler, K Hammond, L Rudischhauser and the W7-X Team
+        conference: Plasma Phys. Control. Fusion62 085003 (2020)
+
+      - title: Filament simulations in regions of highly-varying parallel connection length
+        link: "https://www.cambridge.org/core/journals/journal-of-plasma-physics/article/filament-simulations-in-regions-of-highlyvarying-parallel-connection-length/D5A1D02C89E4786D8E9ED8C6094DD69B"
+        authors: B Shanahan & P Huslage
+        conference: Journal of Plasma Physics, 86 (3), 905860314 (2020)
+
+      - title: Fluid simulations of plasma filaments in stellarator geometries with BSTING
+        link: "https://iopscience.iop.org/article/10.1088/1361-6587/aaed7d"
+        authors: B W Shanahan, B D Dudson and P Hill
+        conference: Plasma Physics and Controlled Fusion 61 0250007 (2019)
+
+      - title: The effects of non-uniform drive on plasma filaments
+        link: "https://iopscience.iop.org/article/10.1088/1742-6596/1125/1/012018"
+        authors: B W Shanahan, B D Dudson and P Hill
+        conference: Journal of Physics, Conference Series 1125 012018 (2018) 
+
+      - title: Blob Dynamics in Torpex poloidal null configurations
+        link: "https://iopscience.iop.org/article/10.1088/0741-3335/58/12/125003"
+        authors: B W Shanahan and B D Dudson
+        conference: Plasma Physics and Controlled Fusion 58 125003 (2016)
+
+      - title: Towards nonaxisymmetry; initial results using the Flux Coordinate Independent method in BOUT++
+        link: "https://iopscience.iop.org/article/10.1088/1742-6596/775/1/012012"
+        authors: B W Shanahan, P Hill, and B D Dudson
+        conference: Journal of Physics, Conference Series 775 012012 (2016)
+
+      - title: X-point modelling in linear configurations using BOUT++
+        link: "https://iopscience.iop.org/article/10.1088/1742-6596/561/1/012015"
+        authors: B Shanahan and B Dudson
+        conference: Journal of Physics, Conference Series 561 012015 (2014)
+
+      - title: Otherwise authored
+        link: "https://scholar.google.com/citations?user=fibTRNwAAAAJ&hl=en&oi=sra"
+
+      - title: Dirichlet boundary conditions for arbitrary-shaped boundaries in stellarator-like magnetic fields for the Flux-Coordinate Independent method
+        link: "https://www.sciencedirect.com/science/article/pii/S0010465516303587"
+        authors: P Hill, B W Shanahan and B D Dudson
+        conference: Computer Physics Communications 213 (2017) 9–18
+
+      - title: A novel flexible field-aligned coordinate system for tokamak edge plasma simulation
+        link: "https://www.sciencedirect.com/science/article/pii/S0010465516303150"
+        authors: J Leddy, B Dudson, M Romanelli, B Shanahan, and N Walkden
+        conference: Computer Physics Communications 212 (2017) 59–68	
+
+      - title: Hot rolling of gamma titanium aluminide foil
+        link: "https://www.sciencedirect.com/science/article/pii/S1359645410002582"
+        authors: S L Semiatin, B W Shanahan and F Meisenkothen
+        conference: Acta Materialia, 58 (2010), 44464457
+
+projects:
+      title: Links
+      assignments:
+      - title: BOUT++
+        link: "https://boutproject.github.io"
+        tagline: "My workhorse -- a framework for solving differential equations in curvilinear geometry."
+      - title: Google Scholar Page
+        link: "https://scholar.google.com/citations?user=fibTRNwAAAAJ&hl=en&oi=sra"
+      - title: ResearchGate Page
+        link: "https://www.researchgate.net/profile/Brendan_Shanahan"
+      - title: Max-Planck-Institut für Plasmaphysik
+        link: "https://ipp.mpg.de"
