@@ -38,7 +38,7 @@ sidebar:
 career-profile:
     title: Bio
     summary: |
-      I am a postdoctoral researcher at the Max-Planck-Institut für Plasmaphysik in Greifswald, Germany as a member of the Stellarator Theory group.  My research focuses on plasma turbulence, and I spend most of my time developing numerical methods for plasma fluid turbulence simulations in non-axisymmetric geometries using the BOUT++ framework.  
+      I am a postdoctoral researcher at the Max-Planck-Institut für Plasmaphysik in Greifswald, Germany as part of the Stellarator Theory group.  My research focuses on plasma turbulence, and I spend most of my time developing numerical methods for plasma fluid turbulence simulations in non-axisymmetric geometries using the BOUT++ framework.  
       
 education:
     - degree: PhD | Physics
