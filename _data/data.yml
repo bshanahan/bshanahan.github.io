@@ -78,6 +78,11 @@ publications:
         link: "https://scholar.google.com/citations?user=fibTRNwAAAAJ&hl=en&oi=sra"
         conference: "*indicates dual first authorship"
 
+      - title: Estimating the error in filament propagation measurement using a synthetic probe
+        link: "https://doi.org/10.1088/1361-6587/ac2ff7"
+        authors: B Shanahan, C Killer, G Pechstein, S A Henneberg, G Fuchert, and O Grulke
+        conference: Plasma Physics and Controlled Fusion 63 125018 (2021)
+
       - title: Plasma filaments in the scrape-off layer of Wendelstein 7-X
         link: "https://iopscience.iop.org/article/10.1088/1361-6587/ab9313"
         authors: C Killer*, B Shanahan*, O Grulke, M Endler, K Hammond, L Rudischhauser and the W7-X Team
