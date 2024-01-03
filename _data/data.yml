@@ -121,6 +121,11 @@ publications:
       - title: Otherwise authored
         link: "https://scholar.google.com/citations?user=fibTRNwAAAAJ&hl=en&oi=sra"
 
+      - title: Coherence of turbulent structures with varying drive in stellarator edge plasmas
+        link: "https://doi.org/10.1088/1361-6587/ad0ee5"
+        authors: P Huslage, G Birkenmeier, B Shanahan and C Killer
+        conference: Plasma Physics and Controlled Fusion 66 (2024) 015006
+
       - title: Dirichlet boundary conditions for arbitrary-shaped boundaries in stellarator-like magnetic fields for the Flux-Coordinate Independent method
         link: "https://www.sciencedirect.com/science/article/pii/S0010465516303587"
         authors: P Hill, B W Shanahan and B D Dudson
