@@ -83,6 +83,12 @@ publications:
         authors: B Shanahan, D Bold, and B Dudson 
         conference: Journal of Plasma Physics , 90 (2), 905900216 (2024)
 
+      - title: Filament simulations for stellarators; a review of recent progress
+        link: "https://doi.org/10.3389/fphy.2024.1399287"
+        authors: B Shanahan
+        conference: Frontiers in Physics 12:1399287 (2024)
+
+
       - title: Estimating the error in filament propagation measurement using a synthetic probe
         link: "https://doi.org/10.1088/1361-6587/ac2ff7"
         authors: B Shanahan, C Killer, G Pechstein, S A Henneberg, G Fuchert, and O Grulke
