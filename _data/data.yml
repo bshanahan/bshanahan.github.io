@@ -88,7 +88,6 @@ publications:
         authors: B Shanahan
         conference: Frontiers in Physics 12:1399287 (2024)
 
-
       - title: Estimating the error in filament propagation measurement using a synthetic probe
         link: "https://doi.org/10.1088/1361-6587/ac2ff7"
         authors: B Shanahan, C Killer, G Pechstein, S A Henneberg, G Fuchert, and O Grulke
@@ -131,6 +130,11 @@ publications:
 
       - title: Otherwise authored
         link: "https://scholar.google.com/citations?user=fibTRNwAAAAJ&hl=en&oi=sra"
+
+      - title: On heat conduction in a plasma with a magnetic island
+        link: "https://doi.org/10.1017/S0022377824001727"
+        authors: G. Pechstein, P. Helander and B. Shanahan
+        conference: Journal of Plasma Physics , 91 (1), E37 (2025)
 
       - title: Coherence of turbulent structures with varying drive in stellarator edge plasmas
         link: "https://doi.org/10.1088/1361-6587/ad0ee5"
