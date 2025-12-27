@@ -1,7 +1,9 @@
 ---
 layout: default
-title: Neutrino
+title: De-bias your news!
 ---
+sidebar:
+    about: False # set to False or comment line if you want to remove the "how to use?" in the sidebar
 
 # Neutrino
 
