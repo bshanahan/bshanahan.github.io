@@ -37,7 +37,7 @@ document.getElementById("neutrino-form").addEventListener("submit", async (e) =>
     const data = await res.json();
 
     if (data.cleaned_text) {
-      output.textContent = data.cleaned_text;
+      output.textContent = data.cleaned;
     } else {
       output.textContent = "Error: " + JSON.stringify(data, null, 2);
     }
