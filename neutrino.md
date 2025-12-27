@@ -5,8 +5,7 @@ title: De-bias your news!
 
 # Tempers, tempered.
 
-Choose a model:
-<label for="model-select">Choose model:</label>
+<label for="model-select">Choose a model:</label>
 <select id="model-select">
   <option value="gpt-4o-mini">GPT-4o-mini</option>
   <option value="gpt-3.5-turbo">GPT-3.5-turbo</option>
