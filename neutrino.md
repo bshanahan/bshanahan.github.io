@@ -3,7 +3,7 @@ layout: compress
 title: De-bias your news!
 ---
 
-# Temper, tempered.
+# Tempers, tempered.
 
 Paste a URL below to have AI remove bias from the page.
 
