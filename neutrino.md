@@ -42,7 +42,8 @@ document.getElementById("neutrino-form").addEventListener("submit", async (e) =>
       output.textContent = "Error: " + JSON.stringify(data, null, 2);
     }
   } catch (err) {
-    output.textContent = "Request failed.";
+    output.textContent = "Request failed: " + err.message;
+    console.error(err);
   }
 });
 </script>
