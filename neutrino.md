@@ -39,7 +39,7 @@ document.getElementById("debias-btn").addEventListener("click", async () => {
 
   try {
     const data = await fetchNeutrino(url);
-    output.textContent = data.cleaned || "No output";
+    output.textContent = data.cleaned_text || "No output";
   } catch (err) {
     output.textContent = "Request failed: " + err.message;
   }
@@ -53,7 +53,7 @@ document
 
     try {
       const data = await fetchNeutrino(url);
-      let text = data.cleaned || "No output";
+      let text = data.cleaned_text || "No output";
 
       if (data.summary_of_changes && data.summary_of_changes.length > 0) {
         text += "\n\nSummary of changes:\n- " + data.summary_of_changes.join("\n- ");
