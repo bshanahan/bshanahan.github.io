@@ -10,11 +10,11 @@ sidebar:
 
     # Profile information
     name: Brendan Shanahan
-    tagline: Physicist | IPP Greifswald
+    tagline: Physicist | MIT PSFC
     avatar: profile.png  #place a 100x100 picture inside /assets/images/ folder and provide the name of the file below
 
     # Sidebar links
-    email: brendan.shanahan@ipp.mpg.de
+    email: b_s@mit.edu
     phone: 
     website: bshanahan.github.io #do not add http://
     linkedin: 
@@ -38,7 +38,7 @@ sidebar:
 career-profile:
     title: Bio
     summary: |
-      I am a physicist at the Max-Planck-Institut für Plasmaphysik in Greifswald, Germany as part of the Stellarator Theory group.  My research focuses on plasma turbulence, and I spend most of my time developing numerical methods for plasma fluid turbulence simulations in non-axisymmetric geometries using the BOUT++ framework.  
+      I am a physicist at the MIT Plasma Science and Fusion Center.  My research focuses on plasma turbulence, and I spend most of my time developing numerical methods for plasma fluid turbulence simulations in non-axisymmetric geometries using the BOUT++ framework.  
       
 education:
     - degree: PhD | Physics
@@ -173,3 +173,5 @@ projects:
         link: "https://www.researchgate.net/profile/Brendan_Shanahan"
       - title: Max-Planck-Institut für Plasmaphysik
         link: "https://www.ipp.mpg.de/person/139941/5497846"
+      - title: MIT PSFC
+        link: "https://www.psfc.mit.edu/"
