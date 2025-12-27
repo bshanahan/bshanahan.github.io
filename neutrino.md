@@ -7,17 +7,6 @@ title: De-bias your news!
 
 Paste a URL below to remove bias from the page.
 
-<form id="neutrino-form">
-  <input
-    type="url"
-    id="url-input"
-    placeholder="https://example.com"
-    required
-    style="width: 100%; padding: 0.5em;"
-  />
-  <button type="submit">Debias</button>
-</form>
-
 <pre id="output" style="white-space: pre-wrap; margin-top: 1em;"></pre>
 <button id="summary-btn" style="margin-top:1em; display:none;">Show Changes & Rationale</button>
 <pre id="summary" style="white-space: pre-wrap; display:none;"></pre>
