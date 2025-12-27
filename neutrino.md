@@ -7,6 +7,8 @@ title: De-bias your news!
 
 Paste a URL below to remove bias from the page.
 
+<pre id="output" style="white-space: pre-wrap; margin-top: 1em;"></pre>
+
 <form id="neutrino-form">
   <input
     type="url"
@@ -15,47 +17,51 @@ Paste a URL below to remove bias from the page.
     required
     style="width: 100%; padding: 0.5em;"
   />
-  <button type="submit">Debias</button>
-  <pre id="output" style="white-space: pre-wrap; margin-top: 1em;"></pre>
-  <button id="summary-btn" style="margin-top:1em; display:none;">Show Changes & Rationale</button>
-  
-  <pre id="summary" style="white-space: pre-wrap; display:none;"></pre>
-
+  <button type="button" id="debias-btn">Debias (Clean Only)</button>
+  <button type="button" id="debias-explain-btn">Debias + Explain</button>
 </form>
 
-
 <script>
-document.getElementById("neutrino-form").addEventListener("submit", async (e) => {
-  e.preventDefault();
+async function fetchNeutrino(url) {
+  const res = await fetch(
+    "https://neutrino-vercel.vercel.app/api/neutrino?url=" +
+      encodeURIComponent(url)
+  );
+  return res.json();
+}
 
-  const url = document.getElementById("url-input").value;
-  const output = document.getElementById("output");
-  const summaryBtn = document.getElementById("summary-btn");
-  const summaryPre = document.getElementById("summary");
+const output = document.getElementById("output");
+const urlInput = document.getElementById("url-input");
 
+document.getElementById("debias-btn").addEventListener("click", async () => {
+  const url = urlInput.value;
   output.textContent = "Processing…";
-  summaryBtn.style.display = "none";
-  summaryPre.style.display = "none";
 
   try {
-    const res = await fetch(
-      "https://neutrino-vercel.vercel.app/api/neutrino?url=" +
-        encodeURIComponent(url)
-    );
-    const data = await res.json();
-
+    const data = await fetchNeutrino(url);
     output.textContent = data.cleaned || "No output";
-
-    if (data.summary_of_changes && data.summary_of_changes.length > 0) {
-      summaryBtn.style.display = "inline-block";
-      summaryBtn.onclick = () => {
-        summaryPre.textContent = data.summary_of_changes.join("\n- ");
-        summaryPre.style.display = "block";
-      };
-    }
   } catch (err) {
     output.textContent = "Request failed: " + err.message;
-    console.error(err);
   }
 });
+
+document
+  .getElementById("debias-explain-btn")
+  .addEventListener("click", async () => {
+    const url = urlInput.value;
+    output.textContent = "Processing…";
+
+    try {
+      const data = await fetchNeutrino(url);
+      let text = data.cleaned || "No output";
+
+      if (data.summary_of_changes && data.summary_of_changes.length > 0) {
+        text += "\n\nSummary of changes:\n- " + data.summary_of_changes.join("\n- ");
+      }
+
+      output.textContent = text;
+    } catch (err) {
+      output.textContent = "Request failed: " + err.message;
+    }
+  });
 </script>
