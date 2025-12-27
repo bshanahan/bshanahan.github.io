@@ -3,9 +3,9 @@ layout: compress
 title: De-bias your news!
 ---
 
-# De-bias your news!
+# Temper, tempered.
 
-Paste a URL below to remove bias from the page.
+Paste a URL below to have AI remove bias from the page.
 
 <pre id="output" style="white-space: pre-wrap; margin-top: 1em;"></pre>
 
