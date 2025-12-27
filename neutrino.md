@@ -1,11 +1,9 @@
 ---
-layout: default
+layout: compress
 title: De-bias your news!
 ---
-sidebar:
-    about: False # set to False or comment line if you want to remove the "how to use?" in the sidebar
 
-# Neutrino
+# De-bias your news!
 
 Paste a URL below to remove bias from the page.
 
