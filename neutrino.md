@@ -1,9 +1,11 @@
 ---
-layout: default
+layout: nosidebar
 title: De-bias your news!
 ---
 
 # Tempers, tempered.
+
+Enter a URL, and let AI try to remove any inherent bias.
 
 <label for="model-select">Choose model:</label>
 <select id="model-select">
