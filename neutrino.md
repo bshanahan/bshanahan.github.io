@@ -33,6 +33,8 @@ Enter a URL, and let AI try to remove any inherent bias.
   </div>
 </form>
 
+<h2 id="article-title"></h2>
+
 <pre id="output" style="white-space: pre-wrap; margin-top: 1em;"></pre>
 <pre id="claims-output" style="white-space: pre-wrap; margin-top: 1em;"></pre>
 
@@ -54,6 +56,9 @@ async function fetchNeutrino(url, model) {
 
   return res.json();
 }
+
+document.getElementById("article-title").textContent =
+  data.title || "";
 
 document.getElementById("debias-btn").addEventListener("click", async () => {
   output.textContent = "Processing…";
