@@ -33,17 +33,13 @@ Enter a URL, and let AI try to remove any inherent bias.
   </div>
 </form>
 
-<h2 id="article-title"></h2>
-
 <pre id="output" style="white-space: pre-wrap; margin-top: 1em;"></pre>
 <pre id="claims-output" style="white-space: pre-wrap; margin-top: 1em;"></pre>
 
 <script>
 const output = document.getElementById("output");
-const claimsOutput = document.getElementById("claims-output");
 const urlInput = document.getElementById("url-input");
 const modelSelect = document.getElementById("model-select");
-const articleTitle = document.getElementById("article-title");
 
 async function fetchNeutrino(url, model) {
   const res = await fetch(
@@ -59,96 +55,97 @@ async function fetchNeutrino(url, model) {
   return res.json();
 }
 
-// Debias button
 document.getElementById("debias-btn").addEventListener("click", async () => {
   output.textContent = "Processing…";
-  articleTitle.textContent = "";
-  claimsOutput.textContent = "";
 
   try {
     const data = await fetchNeutrino(urlInput.value, modelSelect.value);
-    articleTitle.textContent = data.title || "";
     output.textContent = data.cleaned_text || "No output";
   } catch (err) {
     output.textContent = err.message;
   }
 });
 
-// Debias + Explain button
-document.getElementById("debias-explain-btn").addEventListener("click", async () => {
-  output.textContent = "Processing…";
-  articleTitle.textContent = "";
-  claimsOutput.textContent = "";
+document
+  .getElementById("debias-explain-btn")
+  .addEventListener("click", async () => {
+    output.textContent = "Processing…";
 
-  try {
-    const data = await fetchNeutrino(urlInput.value, modelSelect.value);
-    articleTitle.textContent = data.title || "";
+    try {
+      const data = await fetchNeutrino(urlInput.value, modelSelect.value);
 
-    let text = data.cleaned_text || "No output";
-    if (data.summary_of_changes?.length) {
-      text += "\n\nSummary of changes:\n";
-      text += data.summary_of_changes.map((c) => `- ${c}`).join("\n");
+      let text = data.cleaned_text || "No output";
+
+      if (data.summary_of_changes?.length) {
+        text += "\n\nSummary of changes:\n";
+        text += data.summary_of_changes.map((c) => `- ${c}`).join("\n");
+      }
+
+      output.textContent = text;
+    } catch (err) {
+      output.textContent = err.message;
     }
+  });
 
-    output.textContent = text;
-  } catch (err) {
-    output.textContent = err.message;
-  }
-});
+document
+  .getElementById("debias-factcheck-btn")
+  .addEventListener("click", async () => {
+    output.textContent = "Processing…";
 
-// Debias + Fact-check button
-document.getElementById("debias-factcheck-btn").addEventListener("click", async () => {
-  output.textContent = "Processing…";
-  articleTitle.textContent = "";
-  claimsOutput.textContent = "";
+    try {
+      const data = await fetchNeutrino(urlInput.value, modelSelect.value);
 
-  try {
-    const data = await fetchNeutrino(urlInput.value, modelSelect.value);
-    articleTitle.textContent = data.title || "";
+      let text = data.cleaned_text || "No output";
 
-    let text = data.cleaned_text || "No output";
-    if (data.fact_check_summary?.length) {
-      text += "\n\nFact-check summary:\n";
-      text += data.fact_check_summary.map((f) => `- ${f}`).join("\n");
+      if (data.fact_check_summary?.length) {
+        text += "\n\nFact-check summary:\n";
+        text += data.fact_check_summary.map((f) => `- ${f}`).join("\n");
+      }
+
+      output.textContent = text;
+    } catch (err) {
+      output.textContent = err.message;
     }
+  });
 
-    output.textContent = text;
-  } catch (err) {
-    output.textContent = err.message;
-  }
-});
+const claimsOutput = document.getElementById("claims-output");
 
-// Debias + Claims + Fact-check button
-document.getElementById("debias-claims-btn").addEventListener("click", async () => {
-  output.textContent = "Processing…";
-  articleTitle.textContent = "";
-  claimsOutput.textContent = "";
+document
+  .getElementById("debias-claims-btn")
+  .addEventListener("click", async () => {
+    output.textContent = "Processing…";
+    claimsOutput.textContent = "";
 
-  try {
-    const data = await fetchNeutrino(urlInput.value, modelSelect.value);
-    articleTitle.textContent = data.title || "";
+    try {
+      const data = await fetchNeutrino(
+        urlInput.value,
+        modelSelect.value
+      );
 
-    // Main cleaned text
-    let text = data.cleaned_text || "No output";
-    output.textContent = text;
+      let text = data.cleaned_text || "No output";
+      output.textContent = text;
 
-    // Claims + fact-check
-    let claimsText = "";
-    if (data.extracted_claims?.length) {
-      claimsText += "Extracted factual claims:\n";
-      claimsText += data.extracted_claims.map((c) => `- ${c}`).join("\n");
-    } else {
-      claimsText += "No extractable factual claims found.";
+      let claimsText = "";
+
+      if (data.extracted_claims?.length) {
+        claimsText += "Extracted factual claims:\n";
+        claimsText += data.extracted_claims
+          .map((c) => `- ${c}`)
+          .join("\n");
+      } else {
+        claimsText += "No extractable factual claims found.";
+      }
+
+      if (data.fact_check_summary?.length) {
+        claimsText += "\n\nFact-check summary:\n";
+        claimsText += data.fact_check_summary
+          .map((f) => `- ${f}`)
+          .join("\n");
+      }
+
+      claimsOutput.textContent = claimsText;
+    } catch (err) {
+      output.textContent = err.message;
     }
-
-    if (data.fact_check_summary?.length) {
-      claimsText += "\n\nFact-check summary:\n";
-      claimsText += data.fact_check_summary.map((f) => `- ${f}`).join("\n");
-    }
-
-    claimsOutput.textContent = claimsText;
-  } catch (err) {
-    output.textContent = err.message;
-  }
-});
+  });
 </script>
