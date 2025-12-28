@@ -5,19 +5,15 @@ title: De-bias your news!
 
 # Tempers, tempered.
 
-<label for="model-select">Choose a model:</label>
+<label for="model-select">Choose model:</label>
 <select id="model-select">
-  <option value="gpt-4o-mini">GPT-4o-mini</option>
-  <option value="gpt-3.5-turbo">GPT-3.5-turbo</option>
-  <option value="google/gemini-2.5-flash">Gemini 2.5</option>
   <option value="anthropic/claude-3-haiku">Claude 3</option>
+  <option value="gpt-4o-mini">GPT-4o Mini</option>
+  <option value="gpt-3.5-turbo">GPT-3.5</option>
+  <option value="google/gemini-2.5-flash">Gemini 2.5 Flash</option>
 </select>
 
-Paste a URL below to have AI remove bias from the page.
-
-<pre id="output" style="white-space: pre-wrap; margin-top: 1em;"></pre>
-
-<form id="neutrino-form">
+<form id="neutrino-form" style="margin-top: 1em;">
   <input
     type="url"
     id="url-input"
@@ -25,51 +21,85 @@ Paste a URL below to have AI remove bias from the page.
     required
     style="width: 100%; padding: 0.5em;"
   />
-  <button type="button" id="debias-btn">Debias (Clean Only)</button>
-  <button type="button" id="debias-explain-btn">Debias + Explain</button>
+
+  <div style="margin-top: 0.5em;">
+    <button type="button" id="debias-btn">Debias</button>
+    <button type="button" id="debias-explain-btn">Debias + Explain</button>
+    <button type="button" id="debias-factcheck-btn">Debias + Fact-check</button>
+  </div>
 </form>
 
-<script>
-async function fetchNeutrino(url, model) {
-  const res = await fetch(
-    `https://neutrino-vercel.vercel.app/api/neutrino?url=${encodeURIComponent(url)}&model=${encodeURIComponent(model)}`
-  );
-  return res.json();
-}
+<pre id="output" style="white-space: pre-wrap; margin-top: 1em;"></pre>
 
+<script>
 const output = document.getElementById("output");
 const urlInput = document.getElementById("url-input");
 const modelSelect = document.getElementById("model-select");
 
+async function fetchNeutrino(url, model) {
+  const res = await fetch(
+    `https://neutrino-vercel.vercel.app/api/neutrino?url=${encodeURIComponent(
+      url
+    )}&model=${encodeURIComponent(model)}`
+  );
+
+  if (!res.ok) {
+    throw new Error("Request failed");
+  }
+
+  return res.json();
+}
+
 document.getElementById("debias-btn").addEventListener("click", async () => {
-  const url = urlInput.value;
-  const model = modelSelect.value;
   output.textContent = "Processing…";
 
   try {
-    const data = await fetchNeutrino(url, model);
+    const data = await fetchNeutrino(urlInput.value, modelSelect.value);
     output.textContent = data.cleaned_text || "No output";
   } catch (err) {
-    output.textContent = "Request failed: " + err.message;
+    output.textContent = err.message;
   }
 });
 
-document.getElementById("debias-explain-btn").addEventListener("click", async () => {
-  const url = urlInput.value;
-  const model = modelSelect.value;
-  output.textContent = "Processing…";
+document
+  .getElementById("debias-explain-btn")
+  .addEventListener("click", async () => {
+    output.textContent = "Processing…";
 
-  try {
-    const data = await fetchNeutrino(url, model);
-    let text = data.cleaned_text || "No output";
+    try {
+      const data = await fetchNeutrino(urlInput.value, modelSelect.value);
 
-    if (data.summary_of_changes && data.summary_of_changes.length > 0) {
-      text += "\n\nSummary of changes:\n- " + data.summary_of_changes.join("\n- ");
+      let text = data.cleaned_text || "No output";
+
+      if (data.summary_of_changes?.length) {
+        text += "\n\nSummary of changes:\n";
+        text += data.summary_of_changes.map((c) => `- ${c}`).join("\n");
+      }
+
+      output.textContent = text;
+    } catch (err) {
+      output.textContent = err.message;
     }
+  });
 
-    output.textContent = text;
-  } catch (err) {
-    output.textContent = "Request failed: " + err.message;
-  }
-});
+document
+  .getElementById("debias-factcheck-btn")
+  .addEventListener("click", async () => {
+    output.textContent = "Processing…";
+
+    try {
+      const data = await fetchNeutrino(urlInput.value, modelSelect.value);
+
+      let text = data.cleaned_text || "No output";
+
+      if (data.fact_check_summary?.length) {
+        text += "\n\nFact-check summary:\n";
+        text += data.fact_check_summary.map((f) => `- ${f}`).join("\n");
+      }
+
+      output.textContent = text;
+    } catch (err) {
+      output.textContent = err.message;
+    }
+  });
 </script>
