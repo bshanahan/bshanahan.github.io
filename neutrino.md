@@ -1,5 +1,5 @@
 ---
-layout: compress
+layout: default
 title: De-bias your news!
 ---
 
