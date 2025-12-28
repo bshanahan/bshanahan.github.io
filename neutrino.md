@@ -26,10 +26,13 @@ title: De-bias your news!
     <button type="button" id="debias-btn">Debias</button>
     <button type="button" id="debias-explain-btn">Debias + Explain</button>
     <button type="button" id="debias-factcheck-btn">Debias + Fact-check</button>
+    <button type="button" id="debias-claims-btn">Debias + Claims + Fact-check</button>
+
   </div>
 </form>
 
 <pre id="output" style="white-space: pre-wrap; margin-top: 1em;"></pre>
+<pre id="claims-output" style="white-space: pre-wrap; margin-top: 1em;"></pre>
 
 <script>
 const output = document.getElementById("output");
@@ -98,6 +101,47 @@ document
       }
 
       output.textContent = text;
+    } catch (err) {
+      output.textContent = err.message;
+    }
+  });
+
+const claimsOutput = document.getElementById("claims-output");
+
+document
+  .getElementById("debias-claims-btn")
+  .addEventListener("click", async () => {
+    output.textContent = "Processing…";
+    claimsOutput.textContent = "";
+
+    try {
+      const data = await fetchNeutrino(
+        urlInput.value,
+        modelSelect.value
+      );
+
+      let text = data.cleaned_text || "No output";
+      output.textContent = text;
+
+      let claimsText = "";
+
+      if (data.extracted_claims?.length) {
+        claimsText += "Extracted factual claims:\n";
+        claimsText += data.extracted_claims
+          .map((c) => `- ${c}`)
+          .join("\n");
+      } else {
+        claimsText += "No extractable factual claims found.";
+      }
+
+      if (data.fact_check_summary?.length) {
+        claimsText += "\n\nFact-check summary:\n";
+        claimsText += data.fact_check_summary
+          .map((f) => `- ${f}`)
+          .join("\n");
+      }
+
+      claimsOutput.textContent = claimsText;
     } catch (err) {
       output.textContent = err.message;
     }
