@@ -10,9 +10,12 @@ Enter a URL, and let AI try to remove any inherent bias.
 <label for="model-select">Choose model:</label>
 <select id="model-select">
   <option value="anthropic/claude-3-haiku">Claude 3</option>
+  <option value="openai/gpt-5.2-chat">GPT-5.2 Chat</option>
   <option value="openai/gpt-4o-mini">GPT-4o Mini</option>
   <option value="openai/gpt-3.5-turbo">GPT-3.5</option>
   <option value="google/gemini-2.5-flash">Gemini 2.5 Flash</option>
+  <option value="google/gemini-3-flash-preview">Gemini 3 Flash Preview</option>
+  
 </select>
 
 <form id="neutrino-form" style="margin-top: 1em;">
