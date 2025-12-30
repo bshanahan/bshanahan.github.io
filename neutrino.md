@@ -15,7 +15,6 @@ Enter a URL, and let AI try to remove any inherent bias.
   <option value="openai/gpt-3.5-turbo">GPT-3.5</option>
   <option value="google/gemini-2.5-flash">Gemini 2.5 Flash</option>
   <option value="google/gemini-3-flash-preview">Gemini 3 Flash Preview</option>
-  
 </select>
 
 <form id="neutrino-form" style="margin-top: 1em;">
