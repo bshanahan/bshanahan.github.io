@@ -24,22 +24,51 @@ Enter a URL, and let AI try to remove any inherent bias.
     style="width: 100%; padding: 0.5em;"
   />
 
-  <div style="margin-top: 0.5em;">
-    <button type="button" id="debias-btn">Debias</button>
-    <button type="button" id="debias-explain-btn">Debias + Explain</button>
-    <button type="button" id="debias-factcheck-btn">Debias + Fact-check</button>
-    <button type="button" id="debias-claims-btn">Debias + Claims + Fact-check</button>
 
-  </div>
+<div style="margin-top: 0.5em;">
+  <label>
+    <input type="checkbox" id="opt-debias" checked />
+    Debias text
+  </label><br />
+
+  <label>
+    <input type="checkbox" id="opt-explain" />
+    Explain inherent bias
+  </label><br />
+
+  <label>
+    <input type="checkbox" id="opt-claims" />
+    Extract factual claims
+  </label><br />
+
+  <label>
+    <input type="checkbox" id="opt-factcheck" />
+    Fact-check claims
+  </label><br />
+
+  <button type="button" id="go-btn" style="margin-top: 0.5em;">
+    Go
+  </button>
+</div>
+
+
 </form>
 
 <pre id="output" style="white-space: pre-wrap; margin-top: 1em;"></pre>
 <pre id="claims-output" style="white-space: pre-wrap; margin-top: 1em;"></pre>
 
+
 <script>
 const output = document.getElementById("output");
+const claimsOutput = document.getElementById("claims-output");
 const urlInput = document.getElementById("url-input");
 const modelSelect = document.getElementById("model-select");
+const articleTitle = document.getElementById("article-title");
+
+const optDebias = document.getElementById("opt-debias");
+const optExplain = document.getElementById("opt-explain");
+const optClaims = document.getElementById("opt-claims");
+const optFactcheck = document.getElementById("opt-factcheck");
 
 async function fetchNeutrino(url, model) {
   const res = await fetch(
@@ -55,97 +84,57 @@ async function fetchNeutrino(url, model) {
   return res.json();
 }
 
-document.getElementById("debias-btn").addEventListener("click", async () => {
+document.getElementById("go-btn").addEventListener("click", async () => {
   output.textContent = "Processing…";
+  claimsOutput.textContent = "";
+  articleTitle.textContent = "";
 
   try {
     const data = await fetchNeutrino(urlInput.value, modelSelect.value);
-    output.textContent = data.cleaned_text || "No output";
-  } catch (err) {
-    output.textContent = err.message;
-  }
-});
 
-document
-  .getElementById("debias-explain-btn")
-  .addEventListener("click", async () => {
-    output.textContent = "Processing…";
+    articleTitle.textContent = data.title || "";
 
-    try {
-      const data = await fetchNeutrino(urlInput.value, modelSelect.value);
+    let mainText = "";
 
-      let text = data.cleaned_text || "No output";
-
-      if (data.summary_of_changes?.length) {
-        text += "\n\nSummary of changes:\n";
-        text += data.summary_of_changes.map((c) => `- ${c}`).join("\n");
-      }
-
-      output.textContent = text;
-    } catch (err) {
-      output.textContent = err.message;
+    // Debiased text
+    if (optDebias.checked && data.cleaned_text) {
+      mainText += data.cleaned_text;
     }
-  });
 
-document
-  .getElementById("debias-factcheck-btn")
-  .addEventListener("click", async () => {
-    output.textContent = "Processing…";
-
-    try {
-      const data = await fetchNeutrino(urlInput.value, modelSelect.value);
-
-      let text = data.cleaned_text || "No output";
-
-      if (data.fact_check_summary?.length) {
-        text += "\n\nFact-check summary:\n";
-        text += data.fact_check_summary.map((f) => `- ${f}`).join("\n");
-      }
-
-      output.textContent = text;
-    } catch (err) {
-      output.textContent = err.message;
+    // Explanation
+    if (optExplain.checked && data.summary_of_changes?.length) {
+      mainText += "\n\nExplanation of bias removed:\n";
+      mainText += data.summary_of_changes.map(c => `- ${c}`).join("\n");
     }
-  });
 
-const claimsOutput = document.getElementById("claims-output");
+    // Fact-check (without claims)
+    if (optFactcheck.checked && !optClaims.checked && data.fact_check_summary?.length) {
+      mainText += "\n\nFact-check summary:\n";
+      mainText += data.fact_check_summary.map(f => `- ${f}`).join("\n");
+    }
 
-document
-  .getElementById("debias-claims-btn")
-  .addEventListener("click", async () => {
-    output.textContent = "Processing…";
-    claimsOutput.textContent = "";
+    output.textContent = mainText || "No output";
 
-    try {
-      const data = await fetchNeutrino(
-        urlInput.value,
-        modelSelect.value
-      );
-
-      let text = data.cleaned_text || "No output";
-      output.textContent = text;
-
+    // Claims + fact-check block
+    if (optClaims.checked) {
       let claimsText = "";
 
       if (data.extracted_claims?.length) {
         claimsText += "Extracted factual claims:\n";
-        claimsText += data.extracted_claims
-          .map((c) => `- ${c}`)
-          .join("\n");
+        claimsText += data.extracted_claims.map(c => `- ${c}`).join("\n");
       } else {
         claimsText += "No extractable factual claims found.";
       }
 
-      if (data.fact_check_summary?.length) {
+      if (optFactcheck.checked && data.fact_check_summary?.length) {
         claimsText += "\n\nFact-check summary:\n";
-        claimsText += data.fact_check_summary
-          .map((f) => `- ${f}`)
-          .join("\n");
+        claimsText += data.fact_check_summary.map(f => `- ${f}`).join("\n");
       }
 
       claimsOutput.textContent = claimsText;
-    } catch (err) {
-      output.textContent = err.message;
     }
-  });
+  } catch (err) {
+    output.textContent = err.message;
+  }
+});
 </script>
