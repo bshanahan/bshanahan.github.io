@@ -57,84 +57,96 @@ Enter a URL, and let AI try to remove any inherent bias.
 <pre id="output" style="white-space: pre-wrap; margin-top: 1em;"></pre>
 <pre id="claims-output" style="white-space: pre-wrap; margin-top: 1em;"></pre>
 
-
 <script>
-const output = document.getElementById("output");
-const claimsOutput = document.getElementById("claims-output");
-const urlInput = document.getElementById("url-input");
-const modelSelect = document.getElementById("model-select");
-const articleTitle = document.getElementById("article-title");
+document.addEventListener("DOMContentLoaded", () => {
+  const output = document.getElementById("output");
+  const claimsOutput = document.getElementById("claims-output");
+  const urlInput = document.getElementById("url-input");
+  const modelSelect = document.getElementById("model-select");
+  const articleTitle = document.getElementById("article-title");
 
-const optDebias = document.getElementById("opt-debias");
-const optExplain = document.getElementById("opt-explain");
-const optClaims = document.getElementById("opt-claims");
-const optFactcheck = document.getElementById("opt-factcheck");
+  const optDebias = document.getElementById("opt-debias");
+  const optExplain = document.getElementById("opt-explain");
+  const optClaims = document.getElementById("opt-claims");
+  const optFactcheck = document.getElementById("opt-factcheck");
 
-async function fetchNeutrino(url, model) {
-  const res = await fetch(
-    `https://neutrino-vercel.vercel.app/api/neutrino?url=${encodeURIComponent(
-      url
-    )}&model=${encodeURIComponent(model)}`
-  );
+  async function fetchNeutrino(url, model) {
+    const res = await fetch(
+      `https://neutrino-vercel.vercel.app/api/neutrino?url=${encodeURIComponent(
+        url
+      )}&model=${encodeURIComponent(model)}`
+    );
 
-  if (!res.ok) {
-    throw new Error("Request failed");
+    if (!res.ok) {
+      throw new Error("Request failed");
+    }
+
+    return res.json();
   }
 
-  return res.json();
-}
+  document.getElementById("go-btn").addEventListener("click", async () => {
+    output.textContent = "Processing…";
+    claimsOutput.textContent = "";
+    articleTitle.textContent = "";
 
-document.getElementById("go-btn").addEventListener("click", async () => {
-  output.textContent = "Processing…";
-  claimsOutput.textContent = "";
-  articleTitle.textContent = "";
+    try {
+      const data = await fetchNeutrino(
+        urlInput.value,
+        modelSelect.value
+      );
 
-  try {
-    const data = await fetchNeutrino(urlInput.value, modelSelect.value);
+      articleTitle.textContent = data.title || "";
 
-    articleTitle.textContent = data.title || "";
+      let mainText = "";
 
-    let mainText = "";
-
-    // Debiased text
-    if (optDebias.checked && data.cleaned_text) {
-      mainText += data.cleaned_text;
-    }
-
-    // Explanation
-    if (optExplain.checked && data.summary_of_changes?.length) {
-      mainText += "\n\nExplanation of bias removed:\n";
-      mainText += data.summary_of_changes.map(c => `- ${c}`).join("\n");
-    }
-
-    // Fact-check (without claims)
-    if (optFactcheck.checked && !optClaims.checked && data.fact_check_summary?.length) {
-      mainText += "\n\nFact-check summary:\n";
-      mainText += data.fact_check_summary.map(f => `- ${f}`).join("\n");
-    }
-
-    output.textContent = mainText || "No output";
-
-    // Claims + fact-check block
-    if (optClaims.checked) {
-      let claimsText = "";
-
-      if (data.extracted_claims?.length) {
-        claimsText += "Extracted factual claims:\n";
-        claimsText += data.extracted_claims.map(c => `- ${c}`).join("\n");
-      } else {
-        claimsText += "No extractable factual claims found.";
+      if (optDebias.checked && data.cleaned_text) {
+        mainText += data.cleaned_text;
       }
 
-      if (optFactcheck.checked && data.fact_check_summary?.length) {
-        claimsText += "\n\nFact-check summary:\n";
-        claimsText += data.fact_check_summary.map(f => `- ${f}`).join("\n");
+      if (optExplain.checked && data.summary_of_changes?.length) {
+        mainText += "\n\nExplanation of bias removed:\n";
+        mainText += data.summary_of_changes
+          .map(c => `- ${c}`)
+          .join("\n");
       }
 
-      claimsOutput.textContent = claimsText;
+      if (
+        optFactcheck.checked &&
+        !optClaims.checked &&
+        data.fact_check_summary?.length
+      ) {
+        mainText += "\n\nFact-check summary:\n";
+        mainText += data.fact_check_summary
+          .map(f => `- ${f}`)
+          .join("\n");
+      }
+
+      output.textContent = mainText || "No output";
+
+      if (optClaims.checked) {
+        let claimsText = "";
+
+        if (data.extracted_claims?.length) {
+          claimsText += "Extracted factual claims:\n";
+          claimsText += data.extracted_claims
+            .map(c => `- ${c}`)
+            .join("\n");
+        } else {
+          claimsText += "No extractable factual claims found.";
+        }
+
+        if (optFactcheck.checked && data.fact_check_summary?.length) {
+          claimsText += "\n\nFact-check summary:\n";
+          claimsText += data.fact_check_summary
+            .map(f => `- ${f}`)
+            .join("\n");
+        }
+
+        claimsOutput.textContent = claimsText;
+      }
+    } catch (err) {
+      output.textContent = err.message;
     }
-  } catch (err) {
-    output.textContent = err.message;
-  }
+  });
 });
 </script>
