@@ -38,7 +38,7 @@ sidebar:
 career-profile:
     title: Bio
     summary: |
-      I am a physicist at the MIT Plasma Science and Fusion Center.  My research focuses on plasma turbulence, and I spend most of my time developing numerical methods for plasma fluid turbulence simulations in non-axisymmetric geometries using the BOUT++ framework.  
+      I am a physicist at the MIT Plasma Science and Fusion Center.  As the lead developer of BSTING, my research focuses on plasma turbulence simulations in stellarators and other complex magnetic configurations.  
       
 education:
     - degree: PhD | Physics
